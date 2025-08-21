@@ -1,4 +1,10 @@
 
+![GitHub License](https://img.shields.io/github/license/nishanmudalige/Chord_Length_Distribution)
+![GitHub top language](https://img.shields.io/github/languages/top/nishanmudalige/Chord_Length_Distribution)
+
+
+---
+
 ## Sample Code to Obtain Histogram and Density Curve of Chord Length Distribution
 
 ```
