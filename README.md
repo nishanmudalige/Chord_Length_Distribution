@@ -97,6 +97,6 @@ legend("topleft",
        # pch = c(19, 18), 
        cex = 0.8,
        lwd    = c(2, 2),
-       inset  = 0.02,    # 2% inset from the margins
+       inset  = 0.02,
        bty    = "n")
 ```
