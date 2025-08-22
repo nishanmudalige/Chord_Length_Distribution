@@ -2,19 +2,6 @@
 ## Functions for generating points on hypersphere ###
 #####################################################
 
-# Generate uniform points on hyper sphere
-# Based on the work by Muller (1959) and Marsaglia (1972)
-# hypersphere_uniform_points = function(n, dim, radius = 1){
-#   
-#   # generate points
-#   pts_unif = matrix(rnorm(n*dim), ncol = dim)
-#   
-#   # normalize
-#   pts_unif = radius * pts_unif / sqrt(rowSums(pts_unif^2))
-#   
-#   return(pts_unif)
-# }
-
 # Using the mvtnorm package
 library(mvtnorm)
 
@@ -46,15 +33,18 @@ chord_lengths = function(points, sorted = T){
 ### CDF presented in paper ###
 ##############################
 
-# library(zipfR)
-# 
-# m_cdf = function(dist, dim, r = 1){
-#   return( zipfR::Ibeta( (dist^2)/(4*r^2), dim/2, dim/2) / beta(dim/2, dim/2)  )
-# }
 
 m_cdf <- function(dist, dim, r = 1) {
   dim = dim - 1;
-  pbeta( (dist^2)/(4*r^2), shape1 = dim/2, shape2 = dim/2 )  # stable regularized I_x
+  
+  if(dist < 0){
+    return(0)
+  } else if (dist > 2*r){
+    return(1)
+  } else {
+    return( pbeta( (dist^2)/(4*r^2), shape1 = dim/2, shape2 = dim/2 ))  # stable regularized I_x
+  }
+  
 }
 
 
