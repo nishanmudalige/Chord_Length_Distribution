@@ -37,14 +37,11 @@ chord_lengths = function(points, sorted = T){
 m_cdf <- function(dist, dim, r = 1) {
   dim = dim - 1;
   
-  if(dist < 0){
-    return(0)
-  } else if (dist > 2*r){
-    return(1)
-  } else {
-    return( pbeta( (dist^2)/(4*r^2), shape1 = dim/2, shape2 = dim/2 ))  # stable regularized I_x
-  }
-  
+  ifelse(dist < 0, 0, 
+         ifelse(dist > 1, 1, 
+                pbeta( (dist^2)/(4*r^2), shape1 = dim/2, shape2 = dim/2 )
+                )
+         )
 }
 
 
