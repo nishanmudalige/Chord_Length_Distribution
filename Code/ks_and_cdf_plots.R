@@ -1,5 +1,11 @@
 source("https://raw.githubusercontent.com/nishanmudalige/Chord_Length_Distribution/refs/heads/main/Code/Inference.R")
 
+# Save old margins
+old_par <- par(no.readonly = TRUE)
+
+# Increase left margin only for this plot
+par(mar = c(5, 4.8, 4, 2))
+
 ## For reproducibility
 set.seed(1)
 
@@ -41,24 +47,25 @@ ks_statistic_chord(ecdf_y, m_cdf_points,
 
 ## Plot theoretical CDF
 plot(d_u_extend, m_cdf_points_extend, type = "l", col="red", 
-     ylab = "Comulative CDF",
-     xlab = "Chord length",
+     ylab = "F(x)",
+     xlab = "x",
      xlim = c(0,2),
      ylim = c(0,1),
      lwd  = 5,
-     main = bquote(ECDF~and~Theoretical~Chord~Length~CDF~over~S^.(dim-1)~'('~n~'='~.(n)~','~r~'='~.(r)~')' ),
+     main = bquote(Empirical~and~Theoretical~Chord~Length~CDF~over~S^.(dim-1)~'('~n~'='~.(n)~','~r~'='~.(r)~')' ),
      cex.lab = 2.0,
+     inset  = 0.02,
      cex.axis = 2.0,
      cex.main = 2.0)
 
 
 ## Superimpose ECDF
-points(d_u, ecdf_y, col = "blue", lwd = 5, type = 'l', pch = 19)
+points(d_u, ecdf_y, col = "blue", lwd = 5, pch = 19)
 
 
 ## Add legend
 legend("topleft",
-       legend = c("Chord Length", "ECDF"),
+       legend = c("Theoretical", "Empirical"),
        col = c("red", "blue"), lty = c(1, 3),
        # pch = c(19, 18),
        cex = 1.75,
@@ -68,3 +75,5 @@ legend("topleft",
        x.intersp = 0.5,
        seg.len  = 1.0,
        y.intersp = 0.34)
+
+par(old_par)
