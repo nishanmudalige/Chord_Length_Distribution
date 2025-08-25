@@ -54,7 +54,7 @@ set.seed(1)
 
 ## Set the dimension (dim) and number of points (n)
 dim = 3
-n = 100
+n = 10
 r = 1
 
 ## Randomly generate points on the sphere
@@ -84,18 +84,17 @@ plot(d_u, m_cdf_points, type = "l", col="red",
      ylab = "Comulative CDF",
      xlab = "Chord length",
      xlim = c(0,2),
-     main = bquote(ECDF~and~Theoretical~Chord~Length~CDF~over~S^.(dim)~'('~n~'='~.(n)~','~r~'='~.(r)~')' ))
+     main = bquote(Empirical~and~Theoretical~Chord~Length~CDF~over~S^.(dim-1)~'('~n~'='~.(n)~','~r~'='~.(r)~')' ))
 
 
 ## Superimpose ECDF
-points(d_u, ecdf_y, col = "blue", lwd = 2, type = 'l', lty=3)
+points(d_u, ecdf_y, col = "blue", lwd = 2, lty=3, pch = 19)
 
 
 ## Add legend
 legend("topleft", 
-       legend = c("Chord Length", "ECDF"), 
+       legend = c("Theoretical", "Empirical"), 
        col = c("red", "blue"), lty = c(1, 2), 
-       # pch = c(19, 18), 
        cex = 0.8,
        lwd    = c(2, 2),
        inset  = 0.02,
