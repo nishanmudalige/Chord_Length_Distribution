@@ -53,8 +53,9 @@ source("https://raw.githubusercontent.com/nishanmudalige/Chord_Length_Distributi
 set.seed(1)
 
 ## Set the dimension (dim) and number of points (n)
-dim = 5
+dim = 3
 n = 100
+r = 1
 
 ## Randomly generate points on the sphere
 points = hypersphere_uniform_points(n, dim)
